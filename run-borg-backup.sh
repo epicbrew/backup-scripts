@@ -56,9 +56,9 @@ fi
 cd /mnt/nas &> ${logfile}
 
 info "performing backup to ${BORG_REPO}"
-/usr/bin/borg create -C zlib ::$(hostname)-$(date) ./storage &> ${logfile}
+/usr/bin/borg create -v -C zlib "::$(hostname)-$(date -I)" ./storage >>${logfile} 2>&1
 
 info "pruning old backups"
-/usr/bin/borg prune ::$(hostname)-$(date) --keep-daily=7 --keep-monthly=3 &> ${logfile}
+/usr/bin/borg prune "::$(hostname)-$(date -I)" --keep-daily=7 --keep-monthly=3 >>${logfile} 2>&1
 
 info "backup complete"
