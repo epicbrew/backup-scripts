@@ -1,0 +1,7 @@
+[Unit]
+Descriptions="Borg backup of NAS data"
+
+[Service]
+EnvironmentFile=/etc/borgbackup.env
+ExecStart=/usr/local/sbin/run-borg-backup.sh
+
